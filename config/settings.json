@@ -1,0 +1,15 @@
+{
+  "siteName": "Komor-IA",
+  "siteUrl": "https://komor-ia.com",
+  "supportEmail": "support@komor-ia.com",
+  "maxApiKeysPerUser": 10,
+  "defaultRateLimit": 1000,
+  "enableRegistration": true,
+  "enableTranslations": true,
+  "requireEmailVerification": false,
+  "maintenanceMode": true,
+  "smtpHost": "",
+  "smtpPort": 587,
+  "smtpUser": "",
+  "smtpPassword": ""
+}

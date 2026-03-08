@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import Sidebar from './sidebar'
-import ChatInterface from './chat-interface'
-import SummaryChatBot from './summury-bot'
-import Home from './accueil'
+import Sidebar from '../../../doc/sidebar'
+import ChatInterface from '../../../doc/chat-interface'
+import SummaryChatBot from '../../../doc/summury-bot'
+import Home from '../../../doc/accueil'
 import ModelInfo from './model-info'
-import ChatBotInterface from './chat-bot-interface' // ← important : importer le composant
+import ChatBotInterface from '../../../doc/chat-bot-interface' // ← important : importer le composant
 
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState('K-MIA')

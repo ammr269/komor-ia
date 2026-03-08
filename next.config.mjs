@@ -34,32 +34,28 @@
 const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
 
-  // Configuration cruciale pour Prisma + Vercel
-  experimental: {
-    outputFileTracingIncludes: {
-      '/api/**/*': ['./node_modules/.prisma/client/**/*'],
-    },
+  // Configuration pour Prisma + Vercel (IMPORTANT pour le déploiement)
+  outputFileTracingIncludes: {
+    '/api/**/*': ['./node_modules/.prisma/client/**/*'],
   },
 
-  serverComponentsExternalPackages: ['@prisma/client', 'bcryptjs'],
+  serverExternalPackages: ['@prisma/client', 'bcryptjs'],
 
   webpack: (config, { isServer }) => {
+    // Simplifier watchOptions - retirer les chemins Windows problématiques
     config.watchOptions = {
       ...config.watchOptions,
       ignored: [
         '**/node_modules/**',
         '**/.next/**',
-        '**/Application Data/**',
-        '**/AppData/**',
-        '**/Cookies/**',
-        '**/Local Settings/**',
         '**/.mysqlsh-gui/**',
-        'C:/Users/HP/Application Data/**',
-        'C:\\Users\\HP\\Application Data\\**',
+        '**/AppData/**',
+        '**/Local Settings/**',
+        '**/Cookies/**',
       ],
     }
 
-    // Configuration pour le client (ne pas désactiver symlinks pour Prisma)
+    // NE PAS désactiver les symlinks (nécessaire pour Prisma sur Vercel)
     if (!isServer) {
       config.resolve = {
         ...config.resolve,
