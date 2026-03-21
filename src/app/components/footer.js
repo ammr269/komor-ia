@@ -108,7 +108,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/pricing"
+                  href="/tarifs"
                   className="hover:text-white transition-colors"
                 >
                   Tarifs & Plans
