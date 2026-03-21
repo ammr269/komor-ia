@@ -40,7 +40,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3">
               <a
-                href="https://twitter.com/komoria"
+                href="https://x.com/komor_ia?s=20"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
@@ -49,7 +49,7 @@ export default function Footer() {
                 <Twitter className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com/company/komoria"
+                href="https://www.linkedin.com/in/komor-ia-7492573b9/?skipRedirect=true"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
@@ -57,7 +57,7 @@ export default function Footer() {
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a
+              {/* <a
                 href="https://github.com/komoria"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -65,9 +65,9 @@ export default function Footer() {
                 aria-label="GitHub"
               >
                 <Github className="w-4 h-4" />
-              </a>
+              </a> */}
               <a
-                href="https://facebook.com/komoria"
+                href="https://web.facebook.com/profile.php?id=61578497709510"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
@@ -137,14 +137,14 @@ export default function Footer() {
                   API Reference
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/blog"
                   className="hover:text-white transition-colors"
                 >
                   Blog & Actualités
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/about"
@@ -174,12 +174,12 @@ export default function Footer() {
                   href="mailto:contact@komor-ia.com"
                   className="hover:text-white transition-colors"
                 >
-                  contact@komor-ia.com
+                  komor.ia2025@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-2">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+269 XXX XXX XXX</span>
+                <span>+212 774329751</span>
               </li>
               <li className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />

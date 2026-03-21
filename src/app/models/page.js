@@ -10,7 +10,7 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import Link from 'next/link'
-import HorizontalNavbar from '../components/horizontal-navbar'
+// import HorizontalNavbar from '../components/horizontal-navbar'
 import Footer from '../components/footer'
 
 export default function ModelsPage() {
@@ -72,7 +72,7 @@ export default function ModelsPage() {
 
   return (
     <div className="min-h-screen bg-[#FAFAF9]">
-      <HorizontalNavbar />
+      {/* <HorizontalNavbar /> */}
 
       {/* Hero */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-white to-[#FAFAF9]">

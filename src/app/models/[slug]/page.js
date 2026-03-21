@@ -16,7 +16,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import Link from 'next/link'
-import HorizontalNavbar from '@/app/components/horizontal-navbar'
+// import HorizontalNavbar from '@/app/components/horizontal-navbar'
 import Footer from '@/app/components/footer'
 
 export default function ModelDetailPage() {
@@ -105,7 +105,7 @@ export default function ModelDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#FAFAF9]">
-      <HorizontalNavbar />
+      {/* <HorizontalNavbar /> */}
 
       {/* Hero */}
       <section className="pt-32 pb-12 bg-gradient-to-b from-white to-[#FAFAF9]">

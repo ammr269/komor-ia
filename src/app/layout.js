@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from './provider'
+import PublicNavbar from './components/public-navbar'
+import Footer from './components/footer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -84,7 +86,7 @@ export const metadata = {
   manifest: '/site.webmanifest',
 
   verification: {
-    google: 'google-site-verification-code', // À remplacer
+    google: 'google-site-verification-code',
   },
 }
 
@@ -105,9 +107,9 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
-
 // import { Inter } from 'next/font/google'
 // import './globals.css'
+// import Providers from './provider'
 
 // const inter = Inter({
 //   subsets: ['latin'],
@@ -207,7 +209,7 @@ export default function RootLayout({ children }) {
 //         />
 //       </head>
 //       <body className={`${inter.className} antialiased bg-gray-50`}>
-//         {children}
+//         <Providers>{children}</Providers>
 //       </body>
 //     </html>
 //   )
