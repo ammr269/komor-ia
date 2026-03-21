@@ -35,6 +35,59 @@ export default function SignupPage() {
     { label: 'Un chiffre', met: /[0-9]/.test(formData.password) },
   ]
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   setError('')
+
+  //   // Validation
+  //   if (formData.password !== formData.confirmPassword) {
+  //     setError('Les mots de passe ne correspondent pas')
+  //     return
+  //   }
+
+  //   if (!passwordRequirements.every((req) => req.met)) {
+  //     setError('Le mot de passe ne respecte pas tous les critères')
+  //     return
+  //   }
+
+  //   setLoading(true)
+
+  //   try {
+  //     // Créer le compte
+  //     const response = await fetch('/api/auth/signup', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({
+  //         name: formData.name,
+  //         email: formData.email,
+  //         password: formData.password,
+  //       }),
+  //     })
+
+  //     const data = await response.json()
+
+  //     if (!response.ok) {
+  //       throw new Error(data.message || 'Erreur lors de la création du compte')
+  //     }
+
+  //     // Connexion automatique après inscription
+  //     const result = await signIn('credentials', {
+  //       redirect: false,
+  //       email: formData.email,
+  //       password: formData.password,
+  //     })
+
+  //     if (result?.error) {
+  //       setError('Compte créé, mais erreur de connexion')
+  //     } else {
+  //       router.push('/')
+  //     }
+  //   } catch (error) {
+  //     setError(error.message || 'Une erreur est survenue')
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -80,7 +133,9 @@ export default function SignupPage() {
       if (result?.error) {
         setError('Compte créé, mais erreur de connexion')
       } else {
-        router.push('/')
+        // ✅ Rediriger vers /dashboard
+        router.push('/dashboard')
+        router.refresh()
       }
     } catch (error) {
       setError(error.message || 'Une erreur est survenue')
@@ -90,8 +145,13 @@ export default function SignupPage() {
   }
 
   const handleGoogleSignIn = async () => {
+    // ✅ Rediriger vers /dashboard
     await signIn('google', { callbackUrl: '/dashboard' })
   }
+
+  // const handleGoogleSignIn = async () => {
+  //   await signIn('google', { callbackUrl: '/dashboard' })
+  // }
 
   return (
     <div className="min-h-screen bg-[#F5F3EF] flex flex-col">

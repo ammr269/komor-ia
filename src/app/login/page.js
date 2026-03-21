@@ -16,7 +16,6 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -32,7 +31,9 @@ export default function LoginPage() {
       if (result?.error) {
         setError('Email ou mot de passe incorrect')
       } else {
-        router.push('/')
+        // ✅ Rediriger vers /dashboard au lieu de /
+        router.push('/dashboard')
+        router.refresh() // Forcer le refresh
       }
     } catch (error) {
       setError('Une erreur est survenue. Veuillez réessayer.')
@@ -42,8 +43,36 @@ export default function LoginPage() {
   }
 
   const handleGoogleSignIn = async () => {
-    await signIn('google', { callbackUrl: '/' })
+    // ✅ Rediriger vers /dashboard
+    await signIn('google', { callbackUrl: '/dashboard' })
   }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   setError('')
+  //   setLoading(true)
+
+  //   try {
+  //     const result = await signIn('credentials', {
+  //       redirect: false,
+  //       email: formData.email,
+  //       password: formData.password,
+  //     })
+
+  //     if (result?.error) {
+  //       setError('Email ou mot de passe incorrect')
+  //     } else {
+  //       router.push('/')
+  //     }
+  //   } catch (error) {
+  //     setError('Une erreur est survenue. Veuillez réessayer.')
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
+
+  // const handleGoogleSignIn = async () => {
+  //   await signIn('google', { callbackUrl: '/' })
+  // }
 
   return (
     <div className="min-h-screen bg-[#F5F3EF] flex flex-col">
