@@ -134,7 +134,7 @@ export default function SignupPage() {
         setError('Compte créé, mais erreur de connexion')
       } else {
         // ✅ Rediriger vers /dashboard
-        router.push('/dashboard')
+        router.push('/')
         router.refresh()
       }
     } catch (error) {

@@ -32,7 +32,7 @@ export default function LoginPage() {
         setError('Email ou mot de passe incorrect')
       } else {
         // ✅ Rediriger vers /dashboard au lieu de /
-        router.push('/dashboard')
+        router.push('/')
         router.refresh() // Forcer le refresh
       }
     } catch (error) {
