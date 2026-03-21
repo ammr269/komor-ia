@@ -146,7 +146,7 @@ export default function SignupPage() {
 
   const handleGoogleSignIn = async () => {
     // ✅ Rediriger vers /dashboard
-    await signIn('google', { callbackUrl: '/dashboard' })
+    await signIn('google', { callbackUrl: '/' })
   }
 
   // const handleGoogleSignIn = async () => {

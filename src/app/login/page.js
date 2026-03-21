@@ -44,7 +44,7 @@ export default function LoginPage() {
 
   const handleGoogleSignIn = async () => {
     // ✅ Rediriger vers /dashboard
-    await signIn('google', { callbackUrl: '/dashboard' })
+    await signIn('google', { callbackUrl: '/' })
   }
   // const handleSubmit = async (e) => {
   //   e.preventDefault()
