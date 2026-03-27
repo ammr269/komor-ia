@@ -17,7 +17,6 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 // import HorizontalNavbar from '@/app/components/horizontal-navbar'
-import Footer from '@/app/components/footer'
 
 export default function ModelDetailPage() {
   const params = useParams()
@@ -377,8 +376,6 @@ export default function ModelDetailPage() {
           </Link>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }

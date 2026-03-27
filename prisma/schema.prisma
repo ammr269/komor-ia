@@ -52,14 +52,19 @@ enum ArticleLanguage {
 }
 
 enum ArticleCategory {
-  news // Actualités
-  literature // Littérature
-  education // Éducation
-  science // Science
-  culture // Culture
-  religion // Religion
-  history // Histoire
-  other
+  actualites // news
+  litterature // literature
+  education // education
+  science // science
+  culture // culture
+  religion // religion
+  histoire // history
+  autre // other
+  economie // economy
+  sport // sport
+  sante // health
+  politique // politics
+  societe
 }
 
 // ============================================
@@ -146,7 +151,7 @@ model Article {
   originalText   String          @map("original_text") @db.LongText
   originalLang   ArticleLanguage @default(fr) @map("original_lang")
   targetLang     ArticleLanguage @default(zdj) @map("target_lang")
-  category       ArticleCategory @default(other)
+  category       ArticleCategory @default(autre)
   status         ArticleStatus   @default(pending)
   difficulty     Int             @default(1) // 1-5: facilité de traduction
   estimatedWords Int             @default(0) @map("estimated_words")
