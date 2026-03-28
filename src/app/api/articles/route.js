@@ -7,53 +7,99 @@ import prisma from '@/lib/prisma'
  * GET /api/articles
  * Récupérer la liste des articles
  */
+// export async function GET(req) {
+//   try {
+//     const { searchParams } = new URL(req.url)
+//     const status = searchParams.get('status')
+//     const category = searchParams.get('category')
+//     const limit = parseInt(searchParams.get('limit') || '50')
+//     const offset = parseInt(searchParams.get('offset') || '0')
+
+//     // Construire le filtre
+//     const where = {}
+//     if (status && status !== 'all') {
+//       where.status = status
+//     }
+//     if (category && category !== 'all') {
+//       where.category = category
+//     }
+//     where.isPublic = true // Seulement les articles publics
+
+//     // Récupérer les articles
+//     const articles = await prisma.article.findMany({
+//       where,
+//       include: {
+//         _count: {
+//           select: {
+//             translations: true,
+//           },
+//         },
+//       },
+//       orderBy: [{ priority: 'desc' }, { createdAt: 'desc' }],
+//       take: limit,
+//       skip: offset,
+//     })
+
+//     // Total pour la pagination
+//     const total = await prisma.article.count({ where })
+
+//     return NextResponse.json(
+//       {
+//         articles,
+//         total,
+//         limit,
+//         offset,
+//       },
+//       { status: 200 },
+//     )
+//   } catch (error) {
+//     console.error('Erreur lors de la récupération des articles:', error)
+//     return NextResponse.json({ message: 'Erreur serveur' }, { status: 500 })
+//   }
+// }
+import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
+
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url)
+
     const status = searchParams.get('status')
     const category = searchParams.get('category')
-    const limit = parseInt(searchParams.get('limit') || '50')
+
+    const limit = Math.min(parseInt(searchParams.get('limit') || '50'), 100)
     const offset = parseInt(searchParams.get('offset') || '0')
 
-    // Construire le filtre
-    const where = {}
-    if (status && status !== 'all') {
-      where.status = status
+    const where = {
+      isPublic: true,
+      ...(status && status !== 'all' && { status }),
+      ...(category && category !== 'all' && { category }),
     }
-    if (category && category !== 'all') {
-      where.category = category
-    }
-    where.isPublic = true // Seulement les articles publics
 
-    // Récupérer les articles
-    const articles = await prisma.article.findMany({
-      where,
-      include: {
-        _count: {
-          select: {
-            translations: true,
+    const [articles, total] = await Promise.all([
+      prisma.article.findMany({
+        where,
+        include: {
+          _count: {
+            select: { translations: true },
           },
         },
-      },
-      orderBy: [{ priority: 'desc' }, { createdAt: 'desc' }],
-      take: limit,
-      skip: offset,
+        orderBy: [{ priority: 'desc' }, { createdAt: 'desc' }],
+        take: limit,
+        skip: offset,
+      }),
+      prisma.article.count({ where }),
+    ])
+
+    return NextResponse.json({
+      articles,
+      total,
+      limit,
+      offset,
+      hasMore: offset + limit < total,
     })
-
-    // Total pour la pagination
-    const total = await prisma.article.count({ where })
-
-    return NextResponse.json(
-      {
-        articles,
-        total,
-        limit,
-        offset,
-      },
-      { status: 200 },
-    )
   } catch (error) {
-    console.error('Erreur lors de la récupération des articles:', error)
+    console.error(error)
     return NextResponse.json({ message: 'Erreur serveur' }, { status: 500 })
   }
 }
