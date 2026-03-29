@@ -205,9 +205,23 @@ export default function ArticlesListPage({ onArticleClick }) {
                   <p className="text-sm text-gray-600 mb-3">
                     {article.originalText.substring(0, 120)}...
                   </p>
+                  <button
+                    onClick={() => onArticleClick(article.slug)}
+                    className="w-full text-left p-4 border rounded-lg hover:bg-gray-50 transition"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-blue-600">Lire →</span>
+                    </div>
 
-                  <button onClick={() => onArticleClick(article.slug)}>
-                    Lire →
+                    <div className="flex items-center justify-between text-xs text-gray-500 mt-2">
+                      <span>
+                        Difficulté: {'⭐'.repeat(article.difficulty || 1)}
+                      </span>
+
+                      {article._count?.translations > 0 && (
+                        <span>{article._count.translations} traduction(s)</span>
+                      )}
+                    </div>
                   </button>
                 </div>
               ))}
