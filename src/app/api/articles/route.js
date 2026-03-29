@@ -57,8 +57,6 @@ import prisma from '@/lib/prisma'
 //     return NextResponse.json({ message: 'Erreur serveur' }, { status: 500 })
 //   }
 // }
-import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
 
 export async function GET(req) {
   try {
